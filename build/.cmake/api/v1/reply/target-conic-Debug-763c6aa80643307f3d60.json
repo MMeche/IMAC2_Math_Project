@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "conic"
+			"path" : "conic.exe"
+		},
+		{
+			"path" : "conic.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -72,7 +75,7 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/usr/include/eigen3"
+					"path" : "C:/Users/fox20/Downloads/include/eigen3"
 				}
 			],
 			"language" : "CXX",
@@ -97,12 +100,16 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "conic",
-	"nameOnDisk" : "conic",
+	"nameOnDisk" : "conic.exe",
 	"paths" : 
 	{
 		"build" : ".",

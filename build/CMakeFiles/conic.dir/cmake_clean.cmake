@@ -1,14 +1,16 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/conic.dir/src/Directory.cpp.o"
-  "CMakeFiles/conic.dir/src/Directory.cpp.o.d"
-  "CMakeFiles/conic.dir/src/Entry.cpp.o"
-  "CMakeFiles/conic.dir/src/Entry.cpp.o.d"
-  "CMakeFiles/conic.dir/src/Geogebra_conics.cpp.o"
-  "CMakeFiles/conic.dir/src/Geogebra_conics.cpp.o.d"
-  "CMakeFiles/conic.dir/src/main.cpp.o"
-  "CMakeFiles/conic.dir/src/main.cpp.o.d"
-  "conic"
+  "CMakeFiles/conic.dir/src/Directory.cpp.obj"
+  "CMakeFiles/conic.dir/src/Directory.cpp.obj.d"
+  "CMakeFiles/conic.dir/src/Entry.cpp.obj"
+  "CMakeFiles/conic.dir/src/Entry.cpp.obj.d"
+  "CMakeFiles/conic.dir/src/Geogebra_conics.cpp.obj"
+  "CMakeFiles/conic.dir/src/Geogebra_conics.cpp.obj.d"
+  "CMakeFiles/conic.dir/src/main.cpp.obj"
+  "CMakeFiles/conic.dir/src/main.cpp.obj.d"
+  "conic.exe"
+  "conic.exe.manifest"
   "conic.pdb"
+  "libconic.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

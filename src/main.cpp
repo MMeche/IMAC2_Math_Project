@@ -36,8 +36,13 @@ int main()
 
   // draw conic
   Eigen::VectorXd conic(6);
-  conic << -1.4, -0.3, -1, -0.6, 0.0, 0.8;
+  conic << -1.4, -0.3, -1, -0.6, 0.0, 0.8; //vecteur qui contient (a, b, c, d, e, f)
   viewer.push_conic(conic, 0,0,200);
+
+  // matrice
+  // Eigen::MatrixXd matrice_c(3);
+  // matrice_c << ; //vecteur qui contient (a, b, c, d, e, f)
+  // viewer.push_conic(conic, 0,0,200);
 
   // render
   viewer.display(); // on terminal

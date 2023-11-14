@@ -12,7 +12,7 @@ if(${EIGEN3_FOUND})
     message(STATUS "  include " ${EIGEN3_INCLUDE_DIR})
 else()
     #message(FATAL_ERROR "lib EIGEN3 not found")
-    set(EIGEN3_INCLUDE_DIR "C:/eigen/eigen-3.4.0")    # windows users: put the path to eigen lib
+    set(EIGEN3_INCLUDE_DIR "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0")    # windows users: put the path to eigen lib
     message(STATUS "  include " ${EIGEN3_INCLUDE_DIR})
 endif()
 
