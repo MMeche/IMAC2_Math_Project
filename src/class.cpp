@@ -2,21 +2,14 @@
 #include <vector>
 #include "class.hpp"
 
-class Conic
-{
-    private : 
-    Eigen::VectorXd conic_coef;
-
-    bool sizeTest(){return conic_coef.size()==6;};
-    
-    public :
-    //Constructor
-    Conic() = default;
-    //From a pre-existing list of conic coefficients
-    Conic(const Eigen::VectorXd &coef) : conic_coef(coef){};
-    //From a set of points
-    Conic(const std::vector<Eigen::Vector2d> points);
-    
-    //Destructor
-    ~Conic() = default;
-};
+Conic::Conic(const std::vector<Eigen::Vector3d> &points){
+    Eigen::MatrixXd A(0,6);
+    int n;
+    for (int i = 0; i <4; i++){
+        points[i](0)*points[i](0), points[i](0)*points[i](1), points[i](1)*points[i](1), points[i](0)*points[i](2), points[i](1)*points[i](2), points[i](2)*points[i](2);
+    };
+        
+    Eigen :: JacobiSVD < Eigen :: MatrixXd > svd(A,
+    Eigen :: ComputeThinU | Eigen :: ComputeFullV );
+    Eigen :: VectorXd x = svd. matrixV (). rightCols (1);
+}
