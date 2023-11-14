@@ -24,7 +24,7 @@
 	#include <io.h>
 #endif // __WINDOWS Mingw compiler__
 
-
+//Créer dossier avec nom spécifié par dirName
 void makeDirectory(const std::string &dirName) {
 
     int nError = 0;
@@ -43,10 +43,10 @@ void makeDirectory(const std::string &dirName) {
     }
 }
 
-
+//vérifie si dossier existe
 bool directoryExists(const std::string &dirName) {
 
-    struct stat info;
+    struct stat info;//pour obtenir info sur fichier ou dossier
 
     if(stat( dirName.c_str(), &info ) != 0)
         return false; // cannot access to the directory
@@ -57,7 +57,7 @@ bool directoryExists(const std::string &dirName) {
     return false;  // file exists but is not a directory
 }
 
-
+//vérifie si dossier ou fichier existe
 bool directoryOrFileExists(const std::string &dirName) {
 
     struct stat info;
@@ -68,17 +68,17 @@ bool directoryOrFileExists(const std::string &dirName) {
     return false;
 }
 
-
+//utilise ifstream pour ouvrir fichier ou dossier spécifié (name)
 bool directoryOrFileExists_ifstream (const std::string& name) {
     std::ifstream f(name.c_str());
     return f.good();
 }
 
-
+//lit contenu fichier spécifié (fileName)
 std::string readFile(const std::string &fileName) {
 
-    std::ifstream myfile;
-    myfile.open(fileName, std::ios::in);
+    std::ifstream myfile;//ouvre myfile
+    myfile.open(fileName, std::ios::in);//ouvre fichier mode lecture
 
     // check if the file is opened
     if(!myfile.is_open()){
@@ -95,7 +95,7 @@ std::string readFile(const std::string &fileName) {
     return data;
 }
 
-
+//ouvre en mode écriture
 bool writeFile(const std::string &data, const std::string &fileName) {
 
     std::ofstream myfile(fileName);
@@ -104,8 +104,8 @@ bool writeFile(const std::string &data, const std::string &fileName) {
         return false;
     }
 
-    myfile << data;
-    myfile.close();
+    myfile << data;//écrit la chaine de caractère donnée (data) dans le fichier
+    myfile.close();//ferme le fichier
 
     return true;
 }
@@ -113,13 +113,15 @@ bool writeFile(const std::string &data, const std::string &fileName) {
 
 
 
-
+//permet de subsituer la chaine de caractère "data"
+//pattern = chaine de caractère qu'on recherche dans fichier data
+//replaceby = chaine de caractère par laquelle on veut remplacer celle de pattern
 void substitute(std::string &data, const std::string &pattern, const std::string &replaceBy) {
 
-    data = std::regex_replace(data, std::regex(pattern), replaceBy);
+    data = std::regex_replace(data, std::regex(pattern), replaceBy);//remplace les 2 entre elles
 }
 
-
+//copie un fichier depuis l'emplacement initial vers la destination
 bool copyBin(const std::string &src, const std::string &dest) {
 
     std::ifstream srcFile(src, std::ios::binary);
@@ -129,7 +131,7 @@ bool copyBin(const std::string &src, const std::string &dest) {
     return srcFile && destFile;
 }
 
-
+//copie fichier texte d'une source vers destination
 bool copyText(const std::string &src, const std::string &dest) {
 
     std::ifstream srcFile(src);
