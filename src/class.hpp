@@ -18,7 +18,7 @@ class Conic
     //From a pre-existing list of conic coefficients
     Conic(const Eigen::VectorXd &coef) : conic_coef(coef){};
     //From a set of points
-    Conic(const std::vector<Eigen::Vector2d> points);
+    Conic(const std::vector<Eigen::Vector3d> &points);
     
     //Destructor
     ~Conic() = default;
