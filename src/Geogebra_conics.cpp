@@ -3,18 +3,20 @@
 #include "Entry.hpp"
 #include "Geogebra_conics.hpp"
 
-
+//constructeur de la classe, vide, aucun parametre
 Viewer_conic::Viewer_conic() {}
 
+//déstructeur de la classe Viewer_conic, vide
 Viewer_conic::~Viewer_conic() {}
 
+//pour afficher les entrées (objets) stockées dans entries
 void Viewer_conic::display() const
 {
     for(const auto& e : entries)
         e.display();
 }
 
-
+//Supprime doublons dans objectName de entries
 void Viewer_conic::removeNameDoublons(){
 
     // for each entry, find if there is multiple occurences of the same name
@@ -37,7 +39,7 @@ void Viewer_conic::removeNameDoublons(){
 }
 
 
-
+//génère fichier Géogébra avec objets de entries
 void Viewer_conic::render(const std::string &filename) {
 
     // open the template file
@@ -107,8 +109,10 @@ void Viewer_conic::render(const std::string &filename) {
     writeFile(data, filename);
 }
 
-
+//permet ajouter des objets à entries (liste)
+//push_point, push_line, push_direction & push_conic sont des méthodes
 // https://wiki.geogebra.org/en/Point_Command
+//permet de retirer les ".", permet d'ajouter un point sur geogebra avec des coordonnées, un nom, une couleur et des paramètre avec entries
 int Viewer_conic::push_point(const Eigen::VectorXd &pt, std::string objectName, const unsigned int &red, const unsigned int &green, const unsigned int &blue)
 {
     // remove space in the name
@@ -130,6 +134,7 @@ int Viewer_conic::push_point(const Eigen::VectorXd &pt, std::string objectName, 
     return EXIT_SUCCESS;
 }
 
+//ajouter une ligne à entries, un point de départ, une ligne, une direction, avec nom
 // https://wiki.geogebra.org/en/Line_Command
 int Viewer_conic::push_line(const Eigen::VectorXd &pt, const Eigen::VectorXd &dir, std::string objectName, const unsigned int &red, const unsigned int &green, const unsigned int &blue)
 {
@@ -140,7 +145,7 @@ int Viewer_conic::push_line(const Eigen::VectorXd &pt, const Eigen::VectorXd &di
     std::string equation;
 
     equation = " Line((" + std::to_string(pt[0]) + "," + std::to_string(pt[1]) +  "), Vector((" + std::to_string(dir[0]) + "," + std::to_string(dir[1]) + ")))";
-
+//pt coordonée x et y, pareil pour dir
     // put a default name
     if(objectName == "")
         objectName = "l";
@@ -153,6 +158,7 @@ int Viewer_conic::push_line(const Eigen::VectorXd &pt, const Eigen::VectorXd &di
 }
 
 
+//permet ajouter vecteur direction avec des composantes (dans entries)
 // https://wiki.geogebra.org/en/Line_Command
 int Viewer_conic::push_direction(const Eigen::VectorXd &direction, std::string objectName, const unsigned int &red, const unsigned int &green, const unsigned int &blue)
 {
@@ -175,6 +181,7 @@ int Viewer_conic::push_direction(const Eigen::VectorXd &direction, std::string o
     return EXIT_SUCCESS;
 }
 
+//permet ajouter conique avec des coef spécifiés, parametre dans entries
  // https://wiki.geogebra.org/en/Conic_Command
 int Viewer_conic::push_conic(const Eigen::VectorXd &c, std::string objectName, const unsigned int &red, const unsigned int &green, const unsigned int &blue)
 {
