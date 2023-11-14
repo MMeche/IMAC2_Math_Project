@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/build",
+  "command": "/usr/bin/g++  -I/usr/include/eigen3 -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/conic.dir/src/main.cpp.o -c /home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/main.cpp",
+  "file": "/home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/main.cpp"
+},
+{
+  "directory": "/home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/build",
+  "command": "/usr/bin/g++  -I/usr/include/eigen3 -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/conic.dir/src/Geogebra_conics.cpp.o -c /home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Geogebra_conics.cpp",
+  "file": "/home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Geogebra_conics.cpp"
+},
+{
+  "directory": "/home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/build",
+  "command": "/usr/bin/g++  -I/usr/include/eigen3 -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/conic.dir/src/Entry.cpp.o -c /home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Entry.cpp",
+  "file": "/home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Entry.cpp"
+},
+{
+  "directory": "/home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/build",
+  "command": "/usr/bin/g++  -I/usr/include/eigen3 -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/conic.dir/src/Directory.cpp.o -c /home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Directory.cpp",
+  "file": "/home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Directory.cpp"
+}
+]

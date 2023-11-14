@@ -1,0 +1,3 @@
+/home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/build/CMakeFiles/conic.dir
+/home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/build/CMakeFiles/edit_cache.dir
+/home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/build/CMakeFiles/rebuild_cache.dir
