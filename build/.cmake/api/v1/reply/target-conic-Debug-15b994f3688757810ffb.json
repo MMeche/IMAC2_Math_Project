@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "conic.exe"
-		},
-		{
-			"path" : "conic.pdb"
+			"path" : "conic"
 		}
 	],
 	"backtrace" : 1,
@@ -75,7 +72,7 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "C:/Users/fox20/Downloads/include/eigen3"
+					"path" : "/usr/include/eigen3"
 				}
 			],
 			"language" : "CXX",
@@ -84,7 +81,8 @@
 				0,
 				1,
 				3,
-				5
+				5,
+				7
 			]
 		}
 	],
@@ -100,16 +98,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "conic",
-	"nameOnDisk" : "conic.exe",
+	"nameOnDisk" : "conic",
 	"paths" : 
 	{
 		"build" : ".",
@@ -124,7 +118,8 @@
 				0,
 				1,
 				3,
-				5
+				5,
+				7
 			]
 		},
 		{
@@ -133,7 +128,8 @@
 			[
 				2,
 				4,
-				6
+				6,
+				8
 			]
 		}
 	],
@@ -176,6 +172,17 @@
 		{
 			"backtrace" : 1,
 			"path" : "src/Directory.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/class.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/class.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],
