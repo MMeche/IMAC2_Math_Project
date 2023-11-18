@@ -403,4 +403,5 @@ CMakeFiles/conic.dir/src/main.cpp.o: \
  /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/bits/list.tcc \
  /home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Entry.hpp \
- /home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Directory.hpp
+ /home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Directory.hpp \
+ /home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/class.hpp

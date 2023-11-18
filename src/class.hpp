@@ -8,8 +8,8 @@
 class Conic
 {
     private : 
-    Eigen::VectorXd conic_coef;
-    Eigen::Matrix3d conic_matrix;
+    Eigen::VectorXd conic_coef; //a,b,c,d,e,f
+    Eigen::Matrix3d conic_matrix; //matrix C
 
     bool sizeTest(){return conic_coef.size()==6;};
     
@@ -21,7 +21,9 @@ class Conic
     //From a set of points
     Conic(const std::vector<Eigen::Vector3d> &points);
 
-    Eigen::Matrix3d Conic::get_conic_matrix() const;
+    Eigen::Matrix3d matrix() const;
+    Eigen::VectorXd coef() const;
+    void display() const;
     
     //Destructor
     ~Conic() = default;

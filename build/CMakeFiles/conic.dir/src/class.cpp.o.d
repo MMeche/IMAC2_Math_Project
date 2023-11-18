@@ -398,4 +398,10 @@ CMakeFiles/conic.dir/src/class.cpp.o: \
  /usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/./RealQZ.h \
- /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h
+ /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+ /home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Geogebra_conics.hpp \
+ /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/bits/list.tcc \
+ /home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Entry.hpp \
+ /home/mmeche/Documents/IMAC/S3/Maths3/ProjetMathsS3/IMAC2_Math_Project/src/Directory.hpp

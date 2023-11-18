@@ -1388,7 +1388,14 @@ CMakeFiles/conic.dir/src/class.cpp.o: ../src/class.cpp \
   /usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
   /usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   /usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
-  /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h
+  /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+  ../src/Geogebra_conics.hpp \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/bits/list.tcc \
+  ../src/Entry.hpp \
+  ../src/Directory.hpp
 
 CMakeFiles/conic.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/stdc-predef.h \
@@ -1848,7 +1855,8 @@ CMakeFiles/conic.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/bits/list.tcc \
   ../src/Entry.hpp \
-  ../src/Directory.hpp
+  ../src/Directory.hpp \
+  ../src/class.hpp
 
 
 ../src/main.cpp:
