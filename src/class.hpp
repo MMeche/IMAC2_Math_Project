@@ -24,6 +24,7 @@ class Conic
     Eigen::Matrix3d matrix() const;
     Eigen::VectorXd coef() const;
     void display() const;
+    void tangent(const std::vector<Eigen::Vector2d> &tangents);
     
     //Destructor
     ~Conic() = default;

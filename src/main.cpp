@@ -52,6 +52,21 @@ int main()
     viewer.push_point(point,"" ,200,0,0);
   }  
 
+  //tangentes
+  std::vector<Eigen::Vector3d> tangents;
+  std::cout << "Entrer les équations de tangentes pour cinq points :\n";
+    for (int i = 0; i < 5; ++i) {
+        Eigen::Vector2d tangent;
+        std::cout << "\nTangente " << i + 1 << " :\n";
+        std::cout << "tx : ";
+        std::cin >> tangent(0);
+        std::cout << "ty : ";
+        std::cin >> tangent(1);
+        std::cout << "tw : ";
+        std::cin >> tangent(2);
+        tangents.push_back(tangent);
+    }
+
   /*// draw line anciennement le template du prof
   viewer.push_line(pt1, pt2-pt1,  200,200,0);*/
 
@@ -62,7 +77,8 @@ int main()
   Eigen::VectorXd coef = conic.coef();
   viewer.push_conic(coef,"", 0,0,200);
 
-
+  Conic conic2(tangents);
+  conic2.display();
 
 
   //pour ajouter points dans Conic
