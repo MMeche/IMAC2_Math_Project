@@ -18,7 +18,7 @@ endif()
 
 
 # files to compile
-add_executable(conic src/main.cpp src/Geogebra_conics.cpp src/Geogebra_conics.hpp src/Entry.cpp src/Entry.hpp src/Directory.cpp src/Directory.hpp src/class.cpp src/class.hpp)
+add_executable(conic src/main.cpp src/Geogebra_conics.cpp src/Geogebra_conics.hpp src/Entry.cpp src/Entry.hpp src/Directory.cpp src/Directory.hpp src/class.cpp src/class.hpp src/function.cpp src/function.hpp)
 
 # compilation options
 target_compile_features(conic PRIVATE cxx_std_11) # use at least c++ 11

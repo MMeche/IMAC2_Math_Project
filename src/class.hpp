@@ -58,4 +58,5 @@ class Conic
     ~Conic() = default;
 };
 
-
+template<typename T>
+void handle_exceptions(const T &t);

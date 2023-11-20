@@ -3,6 +3,21 @@
 #include "class.hpp"
 #include "Geogebra_conics.hpp"
 
+template<typename T>
+void handle_exceptions(const T &t){
+    std::vector<Eigen::Vector3d> x = t.getter();
+    int nb_elmts = x.size();
+    if(nb_elmts < 5){
+        throw std::logic_error("\nUne conique necessite au moins 5 points/tangentes, le système est sous-dimensionne");
+    }
+    for(int i = 0 ; i < nb_elmts ; i++){
+        Eigen::Vector3d p = x[i];
+        if((std::find(x.begin(),x.begin()+i,p)!= x.begin()+i) | (std::find(x.begin()+i+1,x.end(),p)!= x.end())){
+            throw std::logic_error("\nAu moins deux points/tangentes ont les mêmes coordonnées.\n Saisissez des points/tangentes uniques.\nLe systeme est sous-dimensionne\nLa conique ne sera pas tracee.");
+        }
+    }
+}
+
 Conic::Conic(const Points &points){
     //Eigen::MatrixXd A(5,6);
     
@@ -10,15 +25,7 @@ Conic::Conic(const Points &points){
     std::vector<Eigen::Vector3d> x = points.getter();
     int nb_points = x.size();
     //Exception
-    if(nb_points < 5){
-        throw std::logic_error("Une conique necessite au moins 5 points, le système est sous-dimensionne");
-    }
-    for(int i = 0 ; i < nb_points ; i++){
-        Eigen::Vector3d p = x[i];
-        if((std::find(x.begin(),x.begin()+i,p)!= x.begin()+i) | (std::find(x.begin()+i+1,x.end(),p)!= x.end())){
-            throw std::logic_error("Au moins deux points ont les mêmes coordonnées. Saisissez des points uniques.\nLe systeme est sous-dimensionne\nLa conique ne sera pas tracee.");
-        }
-    }
+    handle_exceptions(points);
     Eigen::MatrixXd A(nb_points, 6);
     for (int i = 0; i <nb_points; i++){
         A(i,0)=x[i](0)*x[i](0);
@@ -42,6 +49,7 @@ Conic::Conic(const Points &points){
 Conic::Conic(const Tangentes &tangents){
     std::vector<Eigen::Vector3d> l = tangents.getter();
     int nb_tangents = l.size();
+    handle_exceptions(tangents);
     Eigen::MatrixXd A(nb_tangents, 6);
     for(int i = 0; i<nb_tangents; i++){
         A(i,0)=l[i](0)*l[i](0);

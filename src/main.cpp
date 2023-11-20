@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 
-//#include <Eigen/Dense>
-#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
+#include <Eigen/Dense>
+//#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
 
 #include "Geogebra_conics.hpp"
 #include "class.hpp"
@@ -36,40 +36,13 @@ int main()
   viewer.push_point(pt4, "p4", 200,0,0);
   viewer.push_point(pt5, "p5", 200,0,0);*/ 
 
-  // Entrer les coordonnées de cinq points
-  // std::vector<Eigen::Vector3d> points;
-  // std::cout << "Entrer les coordonnées de cinq points :\n";
-  // for (int i = 0; i < 5; ++i) {
-  //   Eigen::Vector3d point;
-  //   std::cout << "\nPoint " << i + 1 << " :\n";
-  //   std::cout << "x : ";
-  //   std::cin >> point(0); 
-  //   std::cout << "y : " ;
-  //   std::cin >> point(1);
-  //   std::cout << "w : ";
-  //   std::cin >> point(2);
-  //   points.push_back(point);
-  //   viewer.push_point(point,"" ,200,0,0);
-  // } 
-
-  std::vector<Eigen::Vector3d> points = input_points();
+  //points
+  std::vector<Eigen::Vector3d> points = input_points(viewer);
   Points P;
   P.setter(points);
 
   //tangentes
-  std::vector<Eigen::Vector3d> tangents;
-  std::cout << "Entrer les équations de tangentes pour cinq points :\n";
-    for (int i = 0; i < 5; ++i) {
-        Eigen::Vector3d tangent;
-        std::cout << "\nTangente " << i + 1 << " :\n";
-        std::cout << "tx : ";
-        std::cin >> tangent(0);
-        std::cout << "ty : ";
-        std::cin >> tangent(1);
-        std::cout << "tw : ";
-        std::cin >> tangent(2);
-        tangents.push_back(tangent);
-    }
+  std::vector<Eigen::Vector3d> tangents = input_tangents(viewer);
   Tangentes T;
   T.setter(tangents);
 
@@ -82,7 +55,7 @@ int main()
     //vecteur qui contient (a, b, c, d, e, f)
     Eigen::VectorXd coef = conic.coef();
     viewer.push_conic(coef,"", 0,0,200);
-    conic.display();
+    //conic.display();
   }
   catch(const std::exception &e){
     std::cerr<< e.what() <<"\n";
@@ -91,7 +64,7 @@ int main()
 
 
   Conic conic2(T);
-  conic2.display();
+  //conic2.display();
 
   Eigen::VectorXd coef = conic2.coef();
   viewer.push_conic(coef,"",0,0,200);
