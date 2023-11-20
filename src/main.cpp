@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 
-//#include <Eigen/Dense>
-#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
+#include <Eigen/Dense>
+//#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
 
 #include "Geogebra_conics.hpp"
 #include "class.hpp"
@@ -50,13 +50,15 @@ int main()
     std::cin >> point(2);
     points.push_back(point);
     viewer.push_point(point,"" ,200,0,0);
-  }  
+  } 
+  Points P;
+  P.setter(points);
 
   //tangentes
   std::vector<Eigen::Vector3d> tangents;
   std::cout << "Entrer les équations de tangentes pour cinq points :\n";
     for (int i = 0; i < 5; ++i) {
-        Eigen::Vector2d tangent;
+        Eigen::Vector3d tangent;
         std::cout << "\nTangente " << i + 1 << " :\n";
         std::cout << "tx : ";
         std::cin >> tangent(0);
@@ -66,19 +68,24 @@ int main()
         std::cin >> tangent(2);
         tangents.push_back(tangent);
     }
+  Tangentes T;
+  T.setter(tangents);
 
   /*// draw line anciennement le template du prof
   viewer.push_line(pt1, pt2-pt1,  200,200,0);*/
 
   // conic object
-  Conic conic(points);
+  Conic conic(P);
   conic.display();
   //vecteur qui contient (a, b, c, d, e, f)
   Eigen::VectorXd coef = conic.coef();
   viewer.push_conic(coef,"", 0,0,200);
 
-  Conic conic2(tangents);
+  Conic conic2(T);
   conic2.display();
+
+  coef = conic2.coef();
+  viewer.push_conic(coef,"",0,0,200);
 
 
   //pour ajouter points dans Conic
