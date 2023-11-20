@@ -2,12 +2,12 @@
 #include <string>
 #include <vector>
 #include "class.hpp"
-#include <Eigen/Dense>
-//#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
+//#include <Eigen/Dense>
+#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
 
 //Container de points
 class Points
-{
+{   
     private:
     std::vector<Eigen::Vector3d> _points;
     
@@ -15,6 +15,13 @@ class Points
     Points()=default;
     inline std::vector<Eigen::Vector3d> getter()const{return _points;};
     inline void setter(const std::vector<Eigen::Vector3d> &points){_points=points;};
+    //surcharge, je crois qu'on en a besoin
+    Points& operator=(const Points& pt){
+        if(this != &pt){
+            _points = pt._points;
+        }
+        return *this;
+    }
 };
 //Container de tangentes
 class Tangentes
