@@ -21,6 +21,23 @@ std::vector<Eigen::Vector3d> input_points(){
       std::cin >> point(2);
       points.push_back(point);
       viewer.push_point(point,"" ,200,0,0);
-    }
+    };
     return points;
+}
+
+std::vector<Eigen::Vector3d> input_tangents(){
+    std::vector<Eigen::Vector3d> tangents;
+    std::cout << "Entrer les équations de tangentes pour cinq points :\n";
+    for (int i = 0; i < 5; ++i) {
+        Eigen::Vector3d tangent;
+        std::cout << "\nTangente " << i + 1 << " :\n";
+        std::cout << "tx : ";
+        std::cin >> tangent(0);
+        std::cout << "ty : ";
+        std::cin >> tangent(1);
+        std::cout << "tw : ";
+        std::cin >> tangent(2);
+        tangents.push_back(tangent);
+    };
+    return tangents;
 }
