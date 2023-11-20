@@ -9,6 +9,16 @@ Conic::Conic(const Points &points){
     //méthode moindre carrés
     std::vector<Eigen::Vector3d> x = points.getter();
     int nb_points = x.size();
+    //Exception
+    if(nb_points < 5){
+        throw std::logic_error("Une conique necessite au moins 5 points, le système est sous-dimensionne");
+    }
+    for(int i = 0 ; i < nb_points ; i++){
+        Eigen::Vector3d p = x[i];
+        if((std::find(x.begin(),x.begin()+i,p)!= x.begin()+i) | (std::find(x.begin()+i+1,x.end(),p)!= x.end())){
+            throw std::logic_error("Au moins deux points ont les mêmes coordonnées. Saisissez des points uniques.\nLe systeme est sous-dimensionne\nLa conique ne sera pas tracee.");
+        }
+    }
     Eigen::MatrixXd A(nb_points, 6);
     for (int i = 0; i <nb_points; i++){
         A(i,0)=x[i](0)*x[i](0);
@@ -26,44 +36,6 @@ Conic::Conic(const Points &points){
     conic_matrix << conic_coef(0), conic_coef(1) / 2, conic_coef(3) / 2,
                    conic_coef(1) / 2, conic_coef(2), conic_coef(4) / 2,
                    conic_coef(3) / 2, conic_coef(4) / 2, conic_coef(5);
-    
-    //exception
-    //nombre points
-    try{
-        std::vector<double> points;
-
-        //fonction entrée points
-        double nb_points = points.size();
-
-        if(nb_points != 5){
-        //throw std::runtime_error("Le nombre de points entrés doit être égal à 5.");
-        throw std::logic_error("Le nombre de points entrés doit être égal à 5.");////je ne sais pas laquelle il faut privilégier
-        }
-    }catch (const std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
-
-    //points similaires
-    try{
-        std::vector<std::vector<double>> points;
-        for (int i = 0; i < 5; ++i) {
-            Eigen::Vector3d point;
-            std::cout << "\nPoint " << i + 1 << " :\n";
-            std::cout << "x : ";
-            std::cin >> point(0); 
-            std::cout << "y : " ;
-            std::cin >> point(1);
-            std::cout << "w : ";
-            std::cin >> point(2);
-
-            if (std::find(points.begin(), points.end(), point) != points.end()) {
-                throw std::runtime_error("Au moins deux points ont les mêmes coordonnées. Saisissez des points uniques.");
-            }
-            //points.push_back(point);//je ne sais pas pourquoi ça ne marche pas
-        }
-    }catch (const std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
 }
 
 

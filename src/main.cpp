@@ -75,16 +75,23 @@ int main()
   viewer.push_line(pt1, pt2-pt1,  200,200,0);*/
 
   // conic object
-  Conic conic(P);
-  conic.display();
-  //vecteur qui contient (a, b, c, d, e, f)
-  Eigen::VectorXd coef = conic.coef();
-  viewer.push_conic(coef,"", 0,0,200);
+  try{
+    Conic conic(P);
+    //vecteur qui contient (a, b, c, d, e, f)
+    Eigen::VectorXd coef = conic.coef();
+    viewer.push_conic(coef,"", 0,0,200);
+    conic.display();
+  }
+  catch(const std::exception &e){
+    std::cerr<< e.what() <<"\n";
+  }
+ 
+
 
   Conic conic2(T);
   conic2.display();
 
-  coef = conic2.coef();
+  Eigen::VectorXd coef = conic2.coef();
   viewer.push_conic(coef,"",0,0,200);
 
 
@@ -92,7 +99,7 @@ int main()
   //Conic Conic(points);
 
   // render
-  viewer.display(); // on terminal
+  //viewer.display(); // on terminal
   viewer.render("output.html");  // generate the output file (to open with your web browser)
 
   return 0;
