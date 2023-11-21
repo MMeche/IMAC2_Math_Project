@@ -2,6 +2,7 @@
 #include <vector>
 #include "class.hpp"
 #include "Geogebra_conics.hpp"
+#include "function.hpp"
 
 template<typename T>
 void handle_exceptions(const T &t){
@@ -35,9 +36,11 @@ Conic::Conic(const Points &points){
         A(i,4)=x[i](1)*x[i](2);
         A(i,5)=x[i](2)*x[i](2);
     };
+    Eigen::VectorXd conic_coef = moindre_carre(A, Eigen::MatrixXd::Ones(nb_points, 1));
+    
         
-    Eigen :: JacobiSVD < Eigen :: MatrixXd > svd(A, Eigen :: ComputeThinU | Eigen :: ComputeFullV );
-    conic_coef = svd. matrixV (). rightCols (1);
+    //Eigen :: JacobiSVD < Eigen :: MatrixXd > svd(A, Eigen :: ComputeThinU | Eigen :: ComputeFullV );
+    //conic_coef = svd. matrixV (). rightCols (1);
 
     // calculer la matrice conique avec conic_coef
     conic_matrix << conic_coef(0), conic_coef(1) / 2, conic_coef(3) / 2,

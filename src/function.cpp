@@ -3,8 +3,8 @@
 #include "class.hpp"
 #include "Geogebra_conics.hpp"
 #include "function.hpp"
-#include <Eigen/Dense>
-//#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
+//#include <Eigen/Dense>
+#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
 
 std::vector<Eigen::Vector3d> input_points(Viewer_conic &viewer){
     std::vector<Eigen::Vector3d> points;
@@ -61,5 +61,10 @@ std::vector<Eigen::Vector3d> input_tangents(Viewer_conic &viewer){
     };
     add_lines(tangents,viewer);
     return tangents;
+}
+
+Eigen::VectorXd moindre_carre(const Eigen::MatrixXd &A, const Eigen::VectorXd &points) {
+    Eigen::VectorXd x = (A.transpose() * A).inverse() * (A.transpose() * points.col(1));
+    return x;
 }
 
