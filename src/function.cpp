@@ -3,13 +3,16 @@
 #include "class.hpp"
 #include "Geogebra_conics.hpp"
 #include "function.hpp"
-//#include <Eigen/Dense>
-#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
+#include <Eigen/Dense>
+//#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
 
 std::vector<Eigen::Vector3d> input_points(Viewer_conic &viewer){
     std::vector<Eigen::Vector3d> points;
-    std::cout << "Entrer les coordonnées de cinq points :\n";
-    for (int i = 0; i < 5; ++i){
+    int nb_points;
+    std::cout<< "Entrer le nombre de point que vous voulez pour définir la conique :\n";
+    std::cin>>nb_points;
+    std::cout << "Entrer les coordonnées de(s) "<<nb_points<<  " point(s) :\n";
+    for (int i = 0; i < nb_points; ++i){
       Eigen::Vector3d point;
       std::cout << "\nPoint " << i + 1 << " :\n";
       std::cout << "x : ";
@@ -63,8 +66,30 @@ std::vector<Eigen::Vector3d> input_tangents(Viewer_conic &viewer){
     return tangents;
 }
 
-Eigen::VectorXd moindre_carre(const Eigen::MatrixXd &A, const Eigen::VectorXd &points) {
-    Eigen::VectorXd x = (A.transpose() * A).inverse() * (A.transpose() * points.col(1));
-    return x;
-}
+Eigen::VectorXd moindre_carres(const Eigen::MatrixXd &A){
+    std::cout<<A<<"\n";
+    Eigen :: JacobiSVD < Eigen :: MatrixXd > svd(A, Eigen :: ComputeThinU | Eigen :: ComputeFullV );
+    std::cout<<svd. matrixV (). rightCols (1);
+    return svd. matrixV (). rightCols (1);
+};
 
+/*    Eigen::VectorXd conic_coef(6);
+    conic_coef <<10,10,10,10,10,10;
+    for(int i = 0 ; i<6 ; i++){
+        Eigen::MatrixXd diminued_A(A.rows(),5);
+        diminued_A.leftCols(i)=A.leftCols(i);
+        diminued_A.rightCols(5-i)=A.rightCols(5-i);
+        Eigen::VectorXd tmp = diminued_A.colPivHouseholderQr().solve(-1*A.col(i));
+        Eigen::VectorXd sol(6);
+        sol[i]=1;
+        sol.head(i) = tmp.head(i);
+        sol.tail(5-i) = tmp.tail(5-i);
+        std::cout<<(A*conic_coef).norm()<<"\n\n";
+        if((A*sol).norm()<(A*conic_coef).norm()){
+            conic_coef = sol;
+        }
+
+        std::cout<<conic_coef<<"\n\n";
+        
+    }
+    std::cout<<conic_coef;*/
