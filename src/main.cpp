@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 
-#include <Eigen/Dense>
-//#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
+//#include <Eigen/Dense>
+#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
 
 #include "Geogebra_conics.hpp"
 #include "class.hpp"
@@ -23,6 +23,7 @@ int main()
   viewer.show_label(true);
 
   /*// draw points anciennement le template du prof
+  //conique ellipse
   Eigen::VectorXd pt1(3), pt2(3), pt3(3), pt4(3), pt5(3);
   pt1 <<  1.5,  2.0, 1.0;
   pt2 <<  3.0,  1.0, 1.0;
@@ -35,6 +36,45 @@ int main()
   viewer.push_point(pt3, "p3", 200,0,0);
   viewer.push_point(pt4, "p4", 200,0,0);
   viewer.push_point(pt5, "p5", 200,0,0);*/ 
+
+  //conique cercle
+  // Eigen::VectorXd pt1(3), pt2(3), pt3(3), pt4(3), pt5(3);
+  // pt1 << 0.0, 1.0, 1.0;
+  // pt2 << 2.0, 3.0, 2.0;
+  // pt3 << -1.0, 0.0, 1.0;
+  // pt4 << 5.0, 2.0, 3.0;
+  // pt5 << -2.0, -2.0, 2.0;
+  // viewer.push_point(pt1, "p1", 200,0,0);
+  // viewer.push_point(pt2, "p2", 200,0,0);
+  // viewer.push_point(pt3, "p3", 200,0,0);
+  // viewer.push_point(pt4, "p4", 200,0,0);
+  // viewer.push_point(pt5, "p5", 200,0,0);
+
+  //conique parabole
+  // Eigen::VectorXd pt1(3), pt2(3), pt3(3), pt4(3), pt5(3);
+  // pt1 << 0.0, 0.0, 1.0;
+  // pt2 << 1.0, 2.0, -1.0;
+  // pt3 << -1.0, 1.0, 3.0;
+  // pt4 << 2.0, 0.0, 2.0;
+  // pt5 << -2.0, 3.0, 1.0;
+  // viewer.push_point(pt1, "p1", 200,0,0);
+  // viewer.push_point(pt2, "p2", 200,0,0);
+  // viewer.push_point(pt3, "p3", 200,0,0);
+  // viewer.push_point(pt4, "p4", 200,0,0);
+  // viewer.push_point(pt5, "p5", 200,0,0);
+  
+  //conique hyperbole
+  // Eigen::VectorXd pt1(3), pt2(3), pt3(3), pt4(3), pt5(3);
+  // pt1 << 1.0, 1.0, 1.0;
+  // pt2 << 2.0, -2.0, 3.0;
+  // pt3 << -1.0, 1.0, 2.0;
+  // pt4 << 3.0, 2.0, 2.0;
+  // pt5 << -2.0, -1.0, 3.0;
+  // viewer.push_point(pt1, "p1", 200,0,0);
+  // viewer.push_point(pt2, "p2", 200,0,0);
+  // viewer.push_point(pt3, "p3", 200,0,0);
+  // viewer.push_point(pt4, "p4", 200,0,0);
+  // viewer.push_point(pt5, "p5", 200,0,0);
 
   //points
   std::vector<Eigen::Vector3d> points = input_points(viewer);
