@@ -6,6 +6,7 @@
 #include <Eigen/Dense>
 //#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
 
+//Interface utilisateur pour rentrer un set de points.
 std::vector<Eigen::Vector3d> input_points(Viewer_conic &viewer){
     std::vector<Eigen::Vector3d> points;
     int nb_points;
@@ -26,6 +27,90 @@ std::vector<Eigen::Vector3d> input_points(Viewer_conic &viewer){
     };
     return points;
 }
+
+//Retourne des set de points prédéfinis. Leur coniques sont respectivement : un cercle, une parabole, une hyperbole et une ellipse.
+std::vector<Eigen::Vector3d> load_points(Viewer_conic &viewer,const std::string &ui){
+    std::vector<Eigen::Vector3d> points;
+    if(ui=="c"){
+        //conique cercle
+        Eigen::VectorXd pt1(3), pt2(3), pt3(3), pt4(3), pt5(3);
+        pt1 << 0.0, 2.0, 1.0;
+        pt2 << 2.0, 0.0, 1.0;
+        pt3 << -2.0, 0.0, 1.0;
+        pt4 << 0.0, -2.0, 1.0;
+        pt5 << sqrt(2), sqrt(2), 1.0;
+        points.push_back(pt1);
+        points.push_back(pt2);
+        points.push_back(pt3);
+        points.push_back(pt4);
+        points.push_back(pt5);
+        viewer.push_point(pt1, "p1", 200,0,0);
+        viewer.push_point(pt2, "p2", 200,0,0);
+        viewer.push_point(pt3, "p3", 200,0,0);
+        viewer.push_point(pt4, "p4", 200,0,0);
+        viewer.push_point(pt5, "p5", 200,0,0);
+    }
+    if(ui=="p"){
+        //conique parabole
+        Eigen::VectorXd pt1(3), pt2(3), pt3(3), pt4(3), pt5(3);
+        pt1 << 0.0, 2.0, 1.0;
+        pt2 << 2.0, 0.0, 0.0;
+        pt3 << -2.0, 0.0, 0.0;
+        pt4 << 0.0, -2.0, 1.0;
+        pt5 << sqrt(2), sqrt(2), 1.0;
+        points.push_back(pt1);
+        points.push_back(pt2);
+        points.push_back(pt3);
+        points.push_back(pt4);
+        points.push_back(pt5);
+        viewer.push_point(pt1, "p1", 200,0,0);
+        viewer.push_point(pt2, "p2", 200,0,0);
+        viewer.push_point(pt3, "p3", 200,0,0);
+        viewer.push_point(pt4, "p4", 200,0,0);
+        viewer.push_point(pt5, "p5", 200,0,0);
+    }
+    if(ui=="h"){
+        //conique hyperbole
+        Eigen::VectorXd pt1(3), pt2(3), pt3(3), pt4(3), pt5(3);
+        pt1 << 4.0, 5.0, 1.0;
+        pt2 << 7.0, 3.0, 1.0;
+        pt3 << 6.0, 4.0, 1.0;
+        pt4 << 1.0, 6.0, 1.0;
+        pt5 << 9.0, 5.0, 1.0;
+        points.push_back(pt1);
+        points.push_back(pt2);
+        points.push_back(pt3);
+        points.push_back(pt4);
+        points.push_back(pt5);        
+        viewer.push_point(pt1, "p1", 200,0,0);
+        viewer.push_point(pt2, "p2", 200,0,0);
+        viewer.push_point(pt3, "p3", 200,0,0);
+        viewer.push_point(pt4, "p4", 200,0,0);
+        viewer.push_point(pt5, "p5", 200,0,0);
+    }
+    if(ui=="e"){
+        //conique ellipse
+        Eigen::VectorXd pt1(3), pt2(3), pt3(3), pt4(3), pt5(3);
+        pt1 <<  1.5,  2.0, 1.0;
+        pt2 <<  3.0,  1.0, 1.0;
+        pt3 << -2.0, -1.0, 1.0;
+        pt4 <<  0.5, -2.0, 1.0;
+        pt5 << -1.0,  3.0, 1.0;
+        points.push_back(pt1);
+        points.push_back(pt2);
+        points.push_back(pt3);
+        points.push_back(pt4);
+        points.push_back(pt5);         
+        viewer.push_point(pt1, "p1", 200,0,0);
+        viewer.push_point(pt2, "p2", 200,0,0);
+        viewer.push_point(pt3, "p3", 200,0,0);
+        viewer.push_point(pt4, "p4", 200,0,0);
+        viewer.push_point(pt5, "p5", 200,0,0);
+    }
+    return points;
+}
+
+//Prend en entrée les paramètres des tangentes pour ajouter au viewer les droites correspondantes.
 void add_lines(const std::vector<Eigen::Vector3d> &tangents , Viewer_conic &viewer){
     int nb_lines = tangents.size();
     Eigen::Vector3d pt1,pt2;
@@ -48,6 +133,7 @@ void add_lines(const std::vector<Eigen::Vector3d> &tangents , Viewer_conic &view
     }
 }
 
+//Interface utilisateur pour rentrer un set de tangentes.
 std::vector<Eigen::Vector3d> input_tangents(Viewer_conic &viewer){
     std::vector<Eigen::Vector3d> tangents;
     std::cout << "Entrer les équations de tangentes pour cinq points :\n";
@@ -66,30 +152,20 @@ std::vector<Eigen::Vector3d> input_tangents(Viewer_conic &viewer){
     return tangents;
 }
 
-Eigen::VectorXd moindre_carres(const Eigen::MatrixXd &A){
-    std::cout<<A<<"\n";
-    Eigen :: JacobiSVD < Eigen :: MatrixXd > svd(A, Eigen :: ComputeThinU | Eigen :: ComputeFullV );
-    std::cout<<svd. matrixV (). rightCols (1);
-    return svd. matrixV (). rightCols (1);
-};
-
-/*    Eigen::VectorXd conic_coef(6);
-    conic_coef <<10,10,10,10,10,10;
-    for(int i = 0 ; i<6 ; i++){
-        Eigen::MatrixXd diminued_A(A.rows(),5);
-        diminued_A.leftCols(i)=A.leftCols(i);
-        diminued_A.rightCols(5-i)=A.rightCols(5-i);
-        Eigen::VectorXd tmp = diminued_A.colPivHouseholderQr().solve(-1*A.col(i));
-        Eigen::VectorXd sol(6);
-        sol[i]=1;
-        sol.head(i) = tmp.head(i);
-        sol.tail(5-i) = tmp.tail(5-i);
-        std::cout<<(A*conic_coef).norm()<<"\n\n";
-        if((A*sol).norm()<(A*conic_coef).norm()){
-            conic_coef = sol;
-        }
-
-        std::cout<<conic_coef<<"\n\n";
-        
-    }
-    std::cout<<conic_coef;*/
+//Retourne un set de tangentes prédéfini.
+std::vector<Eigen::Vector3d> load_tangents(Viewer_conic &viewer){
+    std::vector<Eigen::Vector3d> tangents;
+    Eigen::VectorXd t1(3), t2(3), t3(3), t4(3), t5(3);
+    t1<< 2.0, -3.0, 4.0;
+    t2<< 5.0, 2.0, -8.0;
+    t3<< 1.0, 2.0, -2.0;
+    t4<< 3.0, -4.0, 7.0;
+    t5<< 2.0, 2.0, -5.0;
+    tangents.push_back(t1);
+    tangents.push_back(t2);
+    tangents.push_back(t3);
+    tangents.push_back(t4);
+    tangents.push_back(t5);
+    add_lines(tangents,viewer);
+    return tangents;
+}

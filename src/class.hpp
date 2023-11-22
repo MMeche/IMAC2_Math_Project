@@ -6,27 +6,34 @@
 #include <Eigen/Dense>
 //#include "C:/Users/fox20/Downloads/eigen-3.4.0/eigen-3.4.0/Eigen/Dense"
 
+class FormContainer{
+    private :
+    std::vector<Eigen::Vector3d> _x;
+    
+    public:
+    FormContainer()=default;
+    inline std::vector<Eigen::Vector3d> getter()const{return _x;};
+    inline void setter(const std::vector<Eigen::Vector3d> &x){_x=x;};
+
+};
+
 //Container de points
-class Points
+class Points : public FormContainer
 {   
     private:
     std::vector<Eigen::Vector3d> _points;
     
     public:
     Points()=default;
-    inline std::vector<Eigen::Vector3d> getter()const{return _points;};
-    inline void setter(const std::vector<Eigen::Vector3d> &points){_points=points;};
 };
 //Container de tangentes
-class Tangentes
+class Tangentes : public FormContainer
 {
     private:
     std::vector<Eigen::Vector3d> _tangentes;
     
     public:
     Tangentes()=default;
-    inline std::vector<Eigen::Vector3d> getter()const{return _tangentes;};
-    inline void setter(const std::vector<Eigen::Vector3d> &tangentes){_tangentes=tangentes;};
 };
 
 class Conic
@@ -40,8 +47,7 @@ class Conic
     public :
     //Constructor
     Conic() = default;
-    //From a pre-existing list of conic coefficients
-    Conic(const Eigen::VectorXd &coef) : conic_coef(coef){};
+
     //From a set of points
     Conic(const Points &points);
     //From a set of tangents
@@ -50,14 +56,18 @@ class Conic
     //Getter
     Eigen::Matrix3d matrix() const;
     Eigen::VectorXd coef() const;
-    
-    
-    void display() const;
-    void tangent(const std::vector<Eigen::Vector3d> &tangents);
+
+    //Setter
+    void change_matrix(const Eigen::Matrix3d &m);
+    void change_coef(const Eigen::VectorXd &c);
+
+    //Methode
+    double norm();
     
     //Destructor
     ~Conic() = default;
 };
+
 
 template<typename T>
 void handle_exceptions(const T &t);
