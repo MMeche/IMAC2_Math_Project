@@ -76,6 +76,19 @@ int main()
   // viewer.push_point(pt4, "p4", 200,0,0);
   // viewer.push_point(pt5, "p5", 200,0,0);
 
+  //tangentes
+  // Eigen::VectorXd t1(3), t2(3), t3(3), t4(3), t5(3);
+  // t1<< 2.0, -3,0, 4.0;
+  // t2<< 5.0, 2,0, -8.0;
+  // t3<< 1.0, 2,0, -2.0;
+  // t4<< 3.0, -4,0, 7.0;
+  // t5<< 2.0, 2,0, -5.0;
+  // viewer.push_point(t1, "t1", 200,0,0);
+  // viewer.push_point(t2, "t2", 200,0,0);
+  // viewer.push_point(t3, "t3", 200,0,0);
+  // viewer.push_point(t4, "t4", 200,0,0);
+  // viewer.push_point(t5, "t5", 200,0,0);
+
   //points
   std::vector<Eigen::Vector3d> points = input_points(viewer);
   Points P;
