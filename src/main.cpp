@@ -11,8 +11,6 @@
 
 int main()
 {
-  // the viewer will open a file whose path is writen in hard (bad!!). 
-  // So you should either launch your program from the fine directory or change the path to this file.
   Viewer_conic viewer;
 
   // viewer options
@@ -43,7 +41,7 @@ int main()
       points = input_points(viewer);
     }
     if(ui=="n"){
-      std::cout<<"Que voulez-vous ?\nUn cercle (c)\nUne parabole (p)\nUne hyperbole (h)\nUne ellipse (e)";
+      std::cout<<"Que voulez-vous ?\nUn cercle (c)\nUne parabole (p)\nUne hyperbole (h)\nUne ellipse (e)\n";
       std::cin>>ui;
       points = load_points(viewer,ui);
       ui="n";
